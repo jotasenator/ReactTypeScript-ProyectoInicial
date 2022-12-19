@@ -26,10 +26,24 @@ const ShopingPage = () => {
           flexWrap: "wrap",
         }}
       >
-        <ProductCard product={product} className="bg-dark">
-          <ProductImage />
-          <ProductTitle title="title from props " />
-          <ProductButtons />
+        <ProductCard product={product} style={{ background: "#70D1F8" }}>
+          <ProductImage
+            style={{
+              boxShadow: "10px 10px 10px black",
+            }}
+          />
+          <ProductTitle
+            title="title from props "
+            style={{
+              fontWeight: "bold",
+            }}
+          />
+          <ProductButtons
+            style={{
+              display: "flex",
+              justifyContent: "end",
+            }}
+          />
         </ProductCard>
 
         <ProductCard product={product} className="bg-dark">
