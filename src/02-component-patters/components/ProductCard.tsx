@@ -2,26 +2,59 @@ import styles from  '../styles/styles.module.css'
 import noImage from '../assets/no-image.jpg'
 import { useProduct } from '../hooks/useProduct';
 
+interface Props {
+    product: Product
+}
 
-const ProductCard = () => {    
+interface Product{
+    id:string;
+    title:string;
+    img?:string;
+}
 
+export const ProductImage=({img=''})=>{
+    return (
+        <img className={styles.productImg} src={ img || noImage} alt="Coffe Mug"  /> 
+    )
+}
+
+export const ProductTitle=({title}:{title:string})=>{
+    return (
+        <span className={styles.productDescription}>{title}</span>
+    )
+}
+
+interface ProductButtonsProps {
+    increaseBy:Function
+    counter:number
+}
+
+const ProductButtons = ({increaseBy, counter}:ProductButtonsProps)=>{
+    
+    return(
+        <div className={styles.buttonsContainer}>
+            <button className={styles.buttonMinus} onClick={()=>increaseBy(-1)}>-</button>
+            <div className={styles.countLabel}>{counter}</div>
+            <button className={styles.buttonAdd} onClick={()=>increaseBy(1)}>+</button>
+        </div>
+
+    )
+}
+
+
+const ProductCard = ({product}:Props) => {     
+    
     const {counter, increaseBy} = useProduct()
     
 
   return (
     <div className={styles.productCard}>
-        <img className={styles.productImg} src="./coffee-mug.png" alt="Coffe Mug"  /> 
-        {/* <img className={styles.productImg} src={noImage} alt="Coffe Mug"  /> */}
-        <span className={styles.productDescription}>Coffee Mug</span>
 
-        <div className={styles.buttonsContainer}>
-            <button className={styles.buttonMinus} onClick={()=>increaseBy(-1)}>-</button>
-            <div className={styles.countLabel}>{counter}</div>
-            <button className={styles.buttonAdd} onClick={()=>increaseBy(1)}>+</button>
+        <ProductImage img={product.img}/>
 
+        <ProductTitle title={product.title}/>
 
-
-        </div>
+        <ProductButtons increaseBy={increaseBy} counter={counter}/>        
       
     </div>
   )
