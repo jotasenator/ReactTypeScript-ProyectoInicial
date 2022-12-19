@@ -39,9 +39,9 @@ const ShopingPage = () => {
         </ProductCard>
 
         <ProductCard product={product} className="bg-dark">
-          <ProductCard.Image />
-          <ProductCard.Title />
-          <ProductCard.Buttons />
+          <ProductCard.Image className="custom-image" />
+          <ProductCard.Title className="text-white" />
+          <ProductCard.Buttons className="custom-buttons" />
         </ProductCard>
       </div>
     </div>
