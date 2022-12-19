@@ -6,6 +6,8 @@ import {
   ProductButtons,
 } from "../components";
 
+import "../styles/custom-styles.css";
+
 const product = {
   id: "1",
   title: "title from product",
@@ -24,9 +26,15 @@ const ShopingPage = () => {
           flexWrap: "wrap",
         }}
       >
-        <ProductCard product={product}>
+        <ProductCard product={product} className="bg-dark">
           <ProductImage />
           <ProductTitle title="title from props " />
+          <ProductButtons />
+        </ProductCard>
+
+        <ProductCard product={product} className="bg-dark">
+          <ProductImage />
+          <ProductTitle className="text-white" />
           <ProductButtons />
         </ProductCard>
 
