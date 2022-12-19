@@ -33,12 +33,12 @@ const ShopingPage = () => {
         </ProductCard>
 
         <ProductCard product={product} className="bg-dark">
-          <ProductImage />
+          <ProductImage className="custom-image" />
           <ProductTitle className="text-white" />
-          <ProductButtons />
+          <ProductButtons className="custom-buttons" />
         </ProductCard>
 
-        <ProductCard product={product}>
+        <ProductCard product={product} className="bg-dark">
           <ProductCard.Image />
           <ProductCard.Title />
           <ProductCard.Buttons />
