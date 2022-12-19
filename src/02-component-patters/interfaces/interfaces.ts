@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+
 import { Props as ProductCardProps } from "../components/ProductCard";
 
 
