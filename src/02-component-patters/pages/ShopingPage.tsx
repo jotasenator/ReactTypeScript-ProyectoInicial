@@ -1,10 +1,10 @@
-import ProductCard from "../components/ProductCard";
 import coffeMug from "../../../public/coffee-mug.png";
 import {
+  ProductCard,
   ProductImage,
   ProductTitle,
   ProductButtons,
-} from "../components/ProductCard";
+} from "../components";
 
 const product = {
   id: "1",
