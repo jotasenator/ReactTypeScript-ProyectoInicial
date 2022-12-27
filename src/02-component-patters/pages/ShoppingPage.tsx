@@ -34,8 +34,14 @@ const ShopingPage = () => {
     [key: string]: ProductInCart;
   }>({});
 
-  const onProductCountChange = () => {
-    console.log("onProductCountChange!!");
+  const onProductCountChange = ({
+    count,
+    product,
+  }: {
+    count: number;
+    product: Product;
+  }) => {
+    console.log("onProductCountChange!!", count, product);
   };
 
   return (
@@ -54,7 +60,7 @@ const ShopingPage = () => {
             key={product.id}
             product={product}
             className="bg-dark text-white"
-            onChange={() => onProductCountChange()}
+            onChange={onProductCountChange}
           >
             <ProductImage
               className="custom-image"
@@ -74,7 +80,7 @@ const ShopingPage = () => {
             style={{
               width: "100px",
             }}
-            onChange={() => onProductCountChange()}
+            //onChange={() => onProductCountChange()}
           >
             <ProductImage
               className="custom-image"
@@ -91,7 +97,7 @@ const ShopingPage = () => {
             style={{
               width: "100px",
             }}
-            onChange={() => onProductCountChange()}
+            //onChange={() => onProductCountChange()}
           >
             <ProductImage
               className="custom-image"
