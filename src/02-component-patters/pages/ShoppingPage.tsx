@@ -30,7 +30,7 @@ interface ProductInCart extends Product {
 }
 
 const ShopingPage = () => {
-  const [shoppingCar, setShoppingCar] = useState<{
+  const [shoppingCart, setShoppingCart] = useState<{
     [key: string]: ProductInCart;
   }>({});
 
@@ -41,7 +41,19 @@ const ShopingPage = () => {
     count: number;
     product: Product;
   }) => {
-    console.log("onProductCountChange!!", count, product);
+    setShoppingCart((oldShoppingCart) => {
+      if (count === 0) {
+        const { [product.id]: toDelete, ...rest } = oldShoppingCart;
+        console.log({ toDelete });
+        console.log(rest);
+        return rest;
+      }
+
+      return {
+        ...oldShoppingCart,
+        [product.id]: { ...product, count },
+      };
+    });
   };
 
   return (
@@ -108,7 +120,6 @@ const ShopingPage = () => {
             <ProductButtons className="custom-buttons" />
           </ProductCard>
         </div>
-
         {/* <ProductCard product={product1} style={{ background: "#70D1F8" }}>
           <ProductImage
             style={{
@@ -140,12 +151,14 @@ const ShopingPage = () => {
           <ProductTitle className="text-white" />
           <ProductButtons className="custom-buttons" />
         </ProductCard> */}
-
         {/* <ProductCard product={product} className="bg-dark">
           <ProductCard.Image className="custom-image" />
           <ProductCard.Title className="text-white" />
           <ProductCard.Buttons className="custom-buttons" />
         </ProductCard> */}
+      </div>
+      <div>
+        <code>{JSON.stringify(shoppingCart, null, 5)}</code>
       </div>
     </div>
   );
