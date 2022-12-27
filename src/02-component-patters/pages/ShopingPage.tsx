@@ -34,6 +34,10 @@ const ShopingPage = () => {
     [key: string]: ProductInCart;
   }>({});
 
+  const onProductCountChange = () => {
+    console.log("onProductCountChange!!");
+  };
+
   return (
     <div>
       <h1>Shoping Page</h1>
@@ -50,6 +54,7 @@ const ShopingPage = () => {
             key={product.id}
             product={product}
             className="bg-dark text-white"
+            onChange={() => onProductCountChange()}
           >
             <ProductImage
               className="custom-image"
@@ -69,6 +74,7 @@ const ShopingPage = () => {
             style={{
               width: "100px",
             }}
+            onChange={() => onProductCountChange()}
           >
             <ProductImage
               className="custom-image"
@@ -85,6 +91,7 @@ const ShopingPage = () => {
             style={{
               width: "100px",
             }}
+            onChange={() => onProductCountChange()}
           >
             <ProductImage
               className="custom-image"
