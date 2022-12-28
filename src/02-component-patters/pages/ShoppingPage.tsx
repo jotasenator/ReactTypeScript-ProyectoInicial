@@ -94,6 +94,7 @@ const ShopingPage = () => {
               style={{
                 width: "100px",
               }}
+              value={product.count}
               //onChange={() => onProductCountChange()}
             >
               <ProductImage
