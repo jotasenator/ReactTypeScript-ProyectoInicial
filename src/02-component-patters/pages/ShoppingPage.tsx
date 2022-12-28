@@ -43,9 +43,9 @@ const ShopingPage = () => {
   }) => {
     setShoppingCart((oldShoppingCart) => {
       if (count === 0) {
+        //pescao
         const { [product.id]: toDelete, ...rest } = oldShoppingCart;
-        console.log({ toDelete });
-        console.log(rest);
+
         return rest;
       }
 
