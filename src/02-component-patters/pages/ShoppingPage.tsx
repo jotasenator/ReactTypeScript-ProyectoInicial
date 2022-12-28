@@ -86,24 +86,30 @@ const ShopingPage = () => {
         ))}
 
         <div className="shopping-cart">
-          <ProductCard
-            product={product2}
-            className="bg-dark text-white"
-            style={{
-              width: "100px",
-            }}
-            //onChange={() => onProductCountChange()}
-          >
-            <ProductImage
-              className="custom-image"
+          {Object.entries(shoppingCart).map(([key, product]) => (
+            <ProductCard
+              key={key}
+              product={product}
+              className="bg-dark text-white"
               style={{
-                boxShadow: "10px 10px 10px black",
+                width: "100px",
               }}
-            />
-            <ProductButtons className="custom-buttons" />
-          </ProductCard>
+              //onChange={() => onProductCountChange()}
+            >
+              <ProductImage
+                className="custom-image"
+                style={{
+                  boxShadow: "10px 10px 10px black",
+                }}
+              />
+              <ProductButtons
+                className="custom-buttons"
+                style={{ display: "flex", justifyContent: "center" }}
+              />
+            </ProductCard>
+          ))}
 
-          <ProductCard
+          {/* <ProductCard
             product={product1}
             className="bg-dark text-white"
             style={{
@@ -118,7 +124,7 @@ const ShopingPage = () => {
               }}
             />
             <ProductButtons className="custom-buttons" />
-          </ProductCard>
+          </ProductCard> */}
         </div>
         {/* <ProductCard product={product1} style={{ background: "#70D1F8" }}>
           <ProductImage
@@ -157,9 +163,9 @@ const ShopingPage = () => {
           <ProductCard.Buttons className="custom-buttons" />
         </ProductCard> */}
       </div>
-      <div>
+      {/* <div>
         <code>{JSON.stringify(shoppingCart, null, 5)}</code>
-      </div>
+      </div> */}
     </div>
   );
 };
