@@ -1,77 +1,16 @@
-import coffeMug from "../../../public/coffee-mug.png";
-import coffeMugMeme from "../../../public/coffee-mug2.png";
 import {
   ProductCard,
   ProductImage,
   ProductTitle,
   ProductButtons,
 } from "../components";
-import { Product } from "../interfaces/interfaces";
+import { products } from "../data/products";
+import { useShoppingCart } from "../hooks/useShoppingCart";
 
 import "../styles/custom-styles.css";
-import { useState } from "react";
-
-const product1 = {
-  id: "1",
-  title: "title from product",
-  img: coffeMug,
-};
-
-const product2 = {
-  id: "2",
-  title: "Coffee Mug Meme",
-  img: coffeMugMeme,
-};
-
-const products: Product[] = [product1, product2];
-
-interface ProductInCart extends Product {
-  count: number;
-}
 
 const ShopingPage = () => {
-  const [shoppingCart, setShoppingCart] = useState<{
-    [key: string]: ProductInCart;
-  }>({});
-
-  const onProductCountChange = ({
-    count,
-    product,
-  }: {
-    count: number;
-    product: Product;
-  }) => {
-    setShoppingCart((oldShoppingCart) => {
-      const productInCart: ProductInCart = oldShoppingCart[product.id] || {
-        ...product,
-        count: 0,
-      };
-
-      if (Math.max(productInCart.count + count, 0) > 0) {
-        productInCart.count += count;
-        return {
-          ...oldShoppingCart,
-          [product.id]: productInCart,
-        };
-      }
-
-      const { [product.id]: toDelete, ...rest } = oldShoppingCart;
-
-      return { ...rest };
-
-      // if (count === 0) {
-      //   //pescao
-      //   const { [product.id]: toDelete, ...rest } = oldShoppingCart;
-
-      //   return rest;
-      // }
-
-      // return {
-      //   ...oldShoppingCart,
-      //   [product.id]: { ...product, count },
-      // };
-    });
-  };
+  const { shoppingCart, onProductCountChange } = useShoppingCart();
 
   return (
     <div>
