@@ -42,17 +42,34 @@ const ShopingPage = () => {
     product: Product;
   }) => {
     setShoppingCart((oldShoppingCart) => {
-      if (count === 0) {
-        //pescao
-        const { [product.id]: toDelete, ...rest } = oldShoppingCart;
+      const productInCart: ProductInCart = oldShoppingCart[product.id] || {
+        ...product,
+        count: 0,
+      };
 
-        return rest;
+      if (Math.max(productInCart.count + count, 0) > 0) {
+        productInCart.count += count;
+        return {
+          ...oldShoppingCart,
+          [product.id]: productInCart,
+        };
       }
 
-      return {
-        ...oldShoppingCart,
-        [product.id]: { ...product, count },
-      };
+      const { [product.id]: toDelete, ...rest } = oldShoppingCart;
+
+      return { ...rest };
+
+      // if (count === 0) {
+      //   //pescao
+      //   const { [product.id]: toDelete, ...rest } = oldShoppingCart;
+
+      //   return rest;
+      // }
+
+      // return {
+      //   ...oldShoppingCart,
+      //   [product.id]: { ...product, count },
+      // };
     });
   };
 
