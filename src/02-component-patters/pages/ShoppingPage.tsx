@@ -25,14 +25,19 @@ const ShopingPage = () => {
           maxCount: 10,
         }}
       >
-        <ProductImage
-          className="custom-image"
-          style={{
-            boxShadow: "10px 10px 10px black",
-          }}
-        />
-        <ProductTitle className="text-bold" />
-        <ProductButtons className="custom-buttons" />
+        {(text) => (
+          <>
+            <ProductImage
+              className="custom-image"
+              style={{
+                boxShadow: "10px 10px 10px black",
+              }}
+            />
+            <ProductTitle className="text-bold" />
+            <ProductButtons className="custom-buttons" />
+            {text}
+          </>
+        )}
       </ProductCard>
     </div>
   );
