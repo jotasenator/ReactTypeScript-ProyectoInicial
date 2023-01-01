@@ -17,7 +17,7 @@ export const ProductButtons = ({ className, style }: Props) => {
   // false si no lo es
 
   const isMinReached = () => {
-    return minCount === 0 && counter === minCount;
+    return (minCount === 0 || !!minCount) && counter === minCount;
   };
 
   const isMaxReached = useCallback(

@@ -8,7 +8,7 @@ interface useProductArgs {
     initialValues?: InitialValues;
 }
 
-export const useProduct = ({ onChange, product, value = 0, initialValues }: useProductArgs) => {
+export const useProduct = ({ onChange, product, value = 2, initialValues }: useProductArgs) => {
 
     const [counter, setCounter] = useState<number>(initialValues?.count || value);
 
