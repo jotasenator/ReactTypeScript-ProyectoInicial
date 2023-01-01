@@ -1,5 +1,6 @@
 import { lazy, LazyExoticComponent } from "react";
 import { RegisterPage } from '../03-forms/pages/RegisterPage';
+import { FormikBasicPage } from '../03-forms/pages/FormikBasicPage';
 
 type JSXComponent = () => JSX.Element;
 
@@ -24,10 +25,10 @@ export const routes: Route[] = [
         name: "Register-Page"
     },
     {
-        to: "/lazy1",
-        path: "lazy1",
-        Component: Lazy1,
-        name: "Lazy-1"
+        to: "/formik-basic",
+        path: "formik-basic",
+        Component: FormikBasicPage,
+        name: "Formik-Basic-Page"
     },
     {
         to: "/lazy2",
