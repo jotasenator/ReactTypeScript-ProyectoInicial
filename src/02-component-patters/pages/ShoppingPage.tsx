@@ -21,12 +21,12 @@ const ShopingPage = () => {
         product={product}
         className="bg-dark text-white"
         initialValues={{
-          count: 4,
+          count: 0,
           maxCount: 10,
           minCount: 0,
         }}
       >
-        {(text) => (
+        {({ reset }) => (
           <>
             <ProductImage
               className="custom-image"
@@ -36,7 +36,8 @@ const ShopingPage = () => {
             />
             <ProductTitle className="text-bold" />
             <ProductButtons className="custom-buttons" />
-            {text}
+
+            <button onClick={reset}>Reset</button>
           </>
         )}
       </ProductCard>
