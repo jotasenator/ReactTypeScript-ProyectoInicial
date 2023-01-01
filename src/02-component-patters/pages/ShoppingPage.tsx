@@ -23,6 +23,7 @@ const ShopingPage = () => {
         initialValues={{
           count: 4,
           maxCount: 10,
+          minCount: 0,
         }}
       >
         {(text) => (

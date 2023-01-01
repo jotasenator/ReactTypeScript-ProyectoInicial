@@ -31,7 +31,7 @@ export const ProductCard = ({
   value,
   initialValues,
 }: Props) => {
-  const { counter, increaseBy } = useProduct({
+  const { counter, increaseBy, minCount, maxCount } = useProduct({
     onChange,
     product,
     value,
@@ -39,7 +39,7 @@ export const ProductCard = ({
   });
 
   return (
-    <Provider value={{ counter, increaseBy, product }}>
+    <Provider value={{ counter, increaseBy, product, minCount, maxCount }}>
       <div style={style} className={`${styles.productCard} ${className}`}>
         {children("Que se cuenta")}
       </div>

@@ -14,8 +14,6 @@ export const useProduct = ({ onChange, product, value = 0, initialValues }: useP
 
     const isMounted = useRef(false)
 
-
-
     const increaseBy = (value: number) => {
 
         let newValue = Math.max(counter + value, 0)
@@ -41,7 +39,9 @@ export const useProduct = ({ onChange, product, value = 0, initialValues }: useP
 
     return {
         counter,
-        increaseBy
+        increaseBy,
+        minCount: initialValues?.minCount,
+        maxCount: initialValues?.maxCount,
     }
 
 }
