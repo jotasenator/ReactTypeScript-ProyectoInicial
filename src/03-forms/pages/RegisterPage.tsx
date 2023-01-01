@@ -3,48 +3,62 @@ import { useState } from "react";
 
 export const RegisterPage = () => {
   const [registerData, setRegisterData] = useState({
-    name: "maykel",
-    email: "jotasenator@gmail.com",
-    password1: "123456",
-    password2: "123456",
+    name: "",
+    email: "",
+    password1: "",
+    password2: "",
   });
 
   const { name, email, password1, password2 } = registerData;
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRegisterData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(registerData);
   };
 
   return (
     <div>
       <div>RegisterPage</div>
 
-      <form>
+      <form noValidate onSubmit={onSubmit}>
         <input
-          type="text"
+          name="name"
+          onChange={onChange}
           placeholder="Name"
+          type="text"
           value={name}
-          onChange={onChange}
         />
         <input
-          type="email"
+          name="email"
+          onChange={onChange}
           placeholder="Email"
+          type="email"
           value={email}
-          onChange={onChange}
         />
         <input
-          type="password"
+          name="password1"
+          onChange={onChange}
           placeholder="Password"
+          type="password"
           value={password1}
-          onChange={onChange}
         />
         <input
-          type="password"
-          placeholder="Repeat Password"
-          value={password2}
+          name="password2"
           onChange={onChange}
+          placeholder="Repeat Password"
+          type="password"
+          value={password2}
         />
-        <button type="submit">Create</button>
+        <button type="submit" onClick={() => console.log(registerData)}>
+          Create
+        </button>
       </form>
     </div>
   );
