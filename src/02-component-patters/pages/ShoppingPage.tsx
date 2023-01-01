@@ -35,25 +35,9 @@ const ShopingPage = () => {
           count,
         }) => (
           <>
-            <ProductImage
-              className="custom-image"
-              style={{
-                boxShadow: "10px 10px 10px black",
-              }}
-            />
+            <ProductImage className="custom-image" />
             <ProductTitle className="text-bold" />
             <ProductButtons className="custom-buttons" />
-
-            <button onClick={reset}>Reset</button>
-            <button onClick={() => count !== minCount && increaseBy(-2)}>
-              -2
-            </button>
-            {!isMaxCountReached && (
-              <button onClick={() => increaseBy(2)}>+2</button>
-            )}
-            <span>
-              {count} - {maxCount}
-            </span>
           </>
         )}
       </ProductCard>
