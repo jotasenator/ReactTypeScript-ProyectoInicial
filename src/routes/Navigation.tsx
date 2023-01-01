@@ -5,8 +5,6 @@ import vite from "../../public/vite.svg";
 import { routes } from "./routes";
 import { Suspense } from "react";
 
-// import { LazyPage1, LazyPage2, LazyPage3 } from "../01-lazyload/pages/index";
-
 export const Navigation = () => {
   return (
     <Suspense fallback={"loading..."}>
