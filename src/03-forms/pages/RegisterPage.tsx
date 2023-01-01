@@ -1,26 +1,16 @@
+import { useForm } from "../hooks/useForm";
 import "../styles/styles.css";
-import { useState } from "react";
 
 export const RegisterPage = () => {
-  const [registerData, setRegisterData] = useState({
+  const { name, email, password1, password2, onChange } = useForm({
     name: "",
     email: "",
     password1: "",
     password2: "",
   });
 
-  const { name, email, password1, password2 } = registerData;
-
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRegisterData((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
-  };
-
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(registerData);
   };
 
   return (
@@ -56,7 +46,12 @@ export const RegisterPage = () => {
           type="password"
           value={password2}
         />
-        <button type="submit" onClick={() => console.log(registerData)}>
+        <button
+          type="submit"
+          onClick={() =>
+            console.log({ name, email, password1, password2, onChange })
+          }
+        >
           Create
         </button>
       </form>
