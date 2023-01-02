@@ -2,7 +2,7 @@ import "../styles/styles.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { MyTextInput } from "../components/MyTextInput";
-import { MySelect } from "./MySelect";
+import { MySelect } from "../components/MySelect";
 
 export const FormikAbstraction = () => {
   return (
