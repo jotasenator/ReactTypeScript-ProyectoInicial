@@ -1,83 +1,67 @@
-import { useForm } from "../hooks/useForm";
+import { Form, Formik } from "formik";
 import "../styles/styles.css";
+import * as Yup from "yup";
+import { MyTextInput } from "../components/MyTextInput";
 
 export const RegisterFormikPage = () => {
-  const {
-    name,
-    email,
-    password1,
-    password2,
-    onChange,
-    resetForm,
-    isValidEmail,
-  } = useForm({
-    name: "",
-    email: "",
-    password1: "",
-    password2: "",
-  });
-
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
-
   return (
     <div>
-      <div>Register Formik Page</div>
+      <h1>Register Formik Page</h1>
 
-      <form noValidate onSubmit={onSubmit}>
-        <input
-          className={`${name.trim().length <= 0 && "has-error"}`}
-          name="name"
-          onChange={onChange}
-          placeholder="Name"
-          type="text"
-          value={name}
-        />
-        {name.trim().length <= 0 && <span>Mandatory field *</span>}
-        <input
-          className={`${!isValidEmail(email) && "has-error"}`}
-          name="email"
-          onChange={onChange}
-          placeholder="Email"
-          type="email"
-          value={email}
-        />
-        {!isValidEmail(email) && <span>Mandatory field *</span>}
-        <input
-          name="password1"
-          onChange={onChange}
-          placeholder="Password"
-          type="password"
-          value={password1}
-        />
-        {password1.trim().length <= 0 && <span>Mandatory field *</span>}
-        {password1.trim().length < 6 && password1.trim().length > 0 && (
-          <span>Password should be bigger than 5 characters *</span>
+      <Formik
+        initialValues={{ name: "", email: "", password1: "", password2: "" }}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+        validationSchema={Yup.object({
+          name: Yup.string()
+            .min(2, "El nombre debe de ser de 3 caracteres o más")
+            .max(15, "El nombre debe ser menor de 15 caracteres")
+            .required("Requerido"),
+          email: Yup.string()
+            .email("Revise el formato del correo")
+            .required("Requerido"),
+          password1: Yup.string()
+            .min(6, "Mínimo 6 letras")
+            .required("Requerido"),
+          password2: Yup.string()
+            .oneOf([Yup.ref("password1")], "Las contraseñas no son iguales")
+            .required("Requerido"),
+        })}
+      >
+        {({ handleReset }) => (
+          <Form>
+            <MyTextInput
+              label={"Nombre"}
+              name={"name"}
+              type="text"
+              placeholder="Escriba su nombre"
+            />
+            <MyTextInput
+              label={"Email"}
+              name={"email"}
+              type="email"
+              placeholder="Ponga su email"
+            />
+            <MyTextInput
+              label={"Password"}
+              name={"password1"}
+              type="password"
+              placeholder="Escriba su password"
+            />
+            <MyTextInput
+              label={"Repetir el Password"}
+              name={"password2"}
+              type="password"
+              placeholder="Repita su password"
+            />
+            <button type="submit">Create</button>
+            <button type="button" onClick={handleReset}>
+              Reset Form
+            </button>
+          </Form>
         )}
-        <input
-          name="password2"
-          onChange={onChange}
-          placeholder="Repeat Password"
-          type="password"
-          value={password2}
-        />
-        {password2.trim().length <= 0 && <span>Mandatory field *</span>}
-        {password2.trim().length > 0 && password1 !== password2 && (
-          <span>Passwords provided must be identical *</span>
-        )}
-        <button
-          type="submit"
-          onClick={() =>
-            console.log({ name, email, password1, password2, onChange })
-          }
-        >
-          Create
-        </button>
-        <button type="button" onClick={resetForm}>
-          Reset Form
-        </button>
-      </form>
+      </Formik>
     </div>
   );
 };
