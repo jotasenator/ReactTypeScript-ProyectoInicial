@@ -1,0 +1,10 @@
+[
+    {
+        "type":"input",
+        "name":"firstName",
+        "placeholder":"Escriba su nombre",
+        "label":"First Name",
+        "value":""
+    }
+
+]
