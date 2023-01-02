@@ -5,6 +5,20 @@
         "placeholder":"Escriba su nombre",
         "label":"First Name",
         "value":""
+    },
+    {
+        "type":"input",
+        "name":"lastName",
+        "placeholder":"Escriba su apellido",
+        "label":"Last Name",
+        "value":""
+    },
+    {
+        "type":"email",
+        "name":"email",
+        "placeholder":"email@gmail.com",
+        "label":"Email",
+        "value":""
     }
 
 ]
