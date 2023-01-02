@@ -2,6 +2,7 @@ import "../styles/styles.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { MyTextInput } from "../components/MyTextInput";
+import { MySelect } from "./MySelect";
 
 export const FormikAbstraction = () => {
   return (
@@ -54,15 +55,13 @@ export const FormikAbstraction = () => {
               type="email"
             />
 
-            <label htmlFor="jobType">Job Type</label>
-            <Field name="jobType" as="select">
+            <MySelect label={"Job Type"} name="jobType" as="select">
               <option value="">Choose</option>
               <option value="developer">Developer</option>
               <option value="designer">Designer</option>
               <option value="it-senior">IT Senior</option>
               <option value="it-junior">IT Jr.</option>
-            </Field>
-            <ErrorMessage name="jobType" component={"span"} />
+            </MySelect>
 
             <label>
               <Field name="terms" type="checkbox" />
