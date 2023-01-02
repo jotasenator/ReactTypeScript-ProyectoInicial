@@ -8,6 +8,10 @@
         "validations":[
             {
                 "type":"required"
+            },
+            {
+                "type":"minLength",
+                "value":2
             }
         ]
     },
@@ -20,6 +24,10 @@
         "validations":[
             {
                 "type":"required"
+            },
+            {
+                "type":"minLength",
+                "value":5
             }
         ]
     },
@@ -32,6 +40,9 @@
         "validations":[
             {
                 "type":"required"
+            },
+            {
+                "type":"email"
             }
         ]
     },
@@ -44,6 +55,11 @@
             { "id":1,"label": "Super Smash"},
             { "id":2,"label": "Metal Gear"},
             { "id":3,"label": "Resident Evil"}            
+        ],
+        "validations":[
+            {
+                "type":"required"
+            }           
         ]
     }
 
